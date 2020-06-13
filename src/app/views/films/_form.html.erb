@@ -1,0 +1,39 @@
+<%= form_with(model: film, local: true ) do |form| %>
+
+<% if film.errors.any? %>
+<div>
+<h2> There is <%= pluralize(film.errors.count, "error") %>
+<ul>
+<% film.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
+</ul>
+</div>
+<% end %>
+
+
+<div>
+ <%= form.label :title %>
+ <%= form.text_field :title %>
+</div>
+
+<div>
+ <%= form.label :description %>
+ <%= form.text_area :description %>
+</div>
+
+<div>
+ <%= form.label :director %>
+ <%= form.text_field :director %>
+</div>
+
+<div>
+ <%= form.label :duration %>
+ <%= form.text_field :duration %>
+</div>
+
+<div>
+ <%= form.submit %>
+</div>
+
+<% end %>
+

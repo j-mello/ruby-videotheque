@@ -1,10 +1,10 @@
-class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+class GenresController < ApplicationController
+  before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @genres = Genre.all
   end
 
   # GET /comments/1
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @genre = Genre.new
   end
 
   # GET /comments/1/edit
@@ -24,15 +24,15 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @genre = Genre.new(genre_params)
 
     respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+      if @genre.save
+        format.html { redirect_to @genre, notice: 'Genre was successfully created.' }
+        format.json { render :show, status: :created, location: @genre }
       else
         format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @genre.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +41,12 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1.json
   def update
     respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+      if @genre.update(genre_params)
+        format.html { redirect_to @genre, notice: 'Genre was successfully updated.' }
+        format.json { render :show, status: :ok, location: @genre }
       else
         format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @genre.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,21 +54,21 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment.destroy
+    @genre.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to genres_url, notice: 'Genre was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
+    def set_genre
+      @genre = Genre.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:name, :message, :post_id)
+    def genre_params
+      params.require(:genre).permit(:name)
     end
 end
