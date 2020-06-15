@@ -1,22 +1,22 @@
 <%= form_with(model: genre, local: true) do |form| %>
   <% if genre.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(genre.errors.count, "error") %> prohibited this genre from being saved:</h2>
+    <h2><%= pluralize(genre.errors.count, "error") %> prohibited this genre from being saved:</h2>
 
-      <ul>
-        <% genre.errors.full_messages.each do |message| %>
+    <ul>
+      <% genre.errors.full_messages.each do |message| %>
+        <div id="error_explanation" class="alert alert-danger" role="alert">
           <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+        </div>
+      <% end %>
+    </ul>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-primary" %>
   </div>
 <% end %>

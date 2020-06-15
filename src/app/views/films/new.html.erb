@@ -1,5 +1,9 @@
-<%= notice %>
+<div class="container">
+	<div class="alert alert-warning" role="alert">
+		<%= notice %>
+	</div>
 
-<%= render 'form', film: @film %>
+	<%= render 'form', film: @film %>
 
-<%= link_to("Liste de films", films_path) %>
+	<%= link_to("Liste de films", films_path) %>
+</div>
