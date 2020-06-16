@@ -1,0 +1,45 @@
+<%= form_with(model: film, local: true) do |form| %>
+  <% if film.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger" role="alert">
+	  <h2> There is <%= pluralize(film.errors.count, "error") %>
+
+	  <ul>
+        <% film.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+	  </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :director %>
+    <%= form.text_field :director, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :duration %>
+    <%= form.text_field :duration, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :genre_id %>
+    <%= form.select :genre_id, Genre.all.collect { |genre| [ genre.name, genre.id ] }, include_blank: false %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :class => "btn btn-primary" %>
+  </div>
+
+<% end %>
+
