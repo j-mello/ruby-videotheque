@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_090027) do
+ActiveRecord::Schema.define(version: 2020_06_20_151701) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2020_06_15_090027) do
     t.string "timestamp"
   end
 
+  create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.date "dateEmprunt"
+    t.date "dateRetour"
+    t.string "etat"
+    t.bigint "film_id", null: false
+    t.integer "user_id1"
+    t.integer "user_id2"
+    t.index ["film_id"], name: "index_logs_on_film_id"
+  end
+
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -62,4 +72,5 @@ ActiveRecord::Schema.define(version: 2020_06_15_090027) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "films", "genres"
+  add_foreign_key "logs", "films"
 end
