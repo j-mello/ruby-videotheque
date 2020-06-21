@@ -11,6 +11,13 @@
 
   <body>
 
+  <nav class="navbar navbar-dark bg-primary">
+    <span class="navbar-brand mb-0 h1">Videotheque</span>
+    <% if user_signed_in? && current_user.role === 'admin' %>
+      <a href="<% root_path %>">Dashboard</a>
+    <% end %>
+  </nav>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
