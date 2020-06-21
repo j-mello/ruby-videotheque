@@ -2,6 +2,7 @@ class FilmsController < ApplicationController
     before_action :set_film, only: [:show, :edit, :update, :destroy]
     # Get /post
     def index
+        authorize! :read, Film
         @films = Film.all
     end
     # Get /post/1
