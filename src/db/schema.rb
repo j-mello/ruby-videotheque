@@ -28,9 +28,11 @@ ActiveRecord::Schema.define(version: 2020_06_20_151701) do
     t.time "duration"
     t.string "timestamp"
     t.bigint "genre_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genre_id"], name: "index_films_on_genre_id"
+    t.index ["user_id"], name: "index_films_on_user_id"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -72,5 +74,6 @@ ActiveRecord::Schema.define(version: 2020_06_20_151701) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "films", "genres"
+  add_foreign_key "films", "users"
   add_foreign_key "logs", "films"
 end

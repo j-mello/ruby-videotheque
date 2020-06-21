@@ -2,7 +2,8 @@ class FilmsController < ApplicationController
     before_action :set_film, only: [:show, :edit, :update, :destroy]
     # Get /post
     def index
-        @films = Film.all
+        #@films = Film.all
+        @films = Film.where(:user_id => current_user.id)
     end
     # Get /post/1
     def show
@@ -44,7 +45,7 @@ class FilmsController < ApplicationController
 
     private
     def film_params
-        params.require(:film).permit(:title, :description, :director, :duration, :genre_id)
+        params.require(:film).permit(:title, :description, :director, :duration, :genre_id).merge(user_id: current_user.id)
     end
     def set_film
         @film = Film.find(params[:id])

@@ -1,1 +1,33 @@
-YKGULHIULGMIOJOHMLUGK
+<h1>Créer un troc</h1>
+
+<%= form_tag "/trocs", method: "post" do %>
+  <label>Quel utilisateur ?</label>
+  <select name='user_id2' id='user_id'>
+    <option value="0">Choisissez</option>
+    <% @users.each do |user| %>
+        <% if user.id != @currentUserId %>
+            <option value="<%= user.id %>"><%= user.username %></option>
+        <% end %>
+    <% end %>
+  </select>
+  <div id="hisMovies"></div>
+<% end %>
+
+<script>
+    document.getElementById('user_id').onchange = function () {
+        if (document.getElementById('user_id').value == 0) {
+            document.getElementById('hisMovies').innerHTML = "";
+            return;
+        }
+
+        let id = parseInt(document.getElementById('user_id').value);
+        let str = "<select id='film_id' name='film_id'>";
+        <% @films.each do |film| %>
+            if (<%= film.user.id %> == id) {
+                str += "<option value='<%= film.id %>'><%= film.title %></option>";
+            }
+        <% end %>
+        str += "</select><br/><input type='submit' value='Envoyer la demande de troc'/>";
+        document.getElementById('hisMovies').innerHTML = str;
+    }
+</script>
