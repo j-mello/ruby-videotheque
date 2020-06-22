@@ -1,33 +1,31 @@
-<h1>Créer un troc</h1>
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <p id="notice"><%= notice %></p>
+    </div>
 
-<%= form_tag "/trocs", method: "post" do %>
-  <label>Quel utilisateur ?</label>
-  <select name='user_id2' id='user_id'>
-    <option value="0">Choisissez</option>
-    <% @users.each do |user| %>
-        <% if user.id != @currentUserId %>
-            <option value="<%= user.id %>"><%= user.username %></option>
-        <% end %>
+    <h1>Emprunts</h1>
+
+    <% if @myTrocs.length() > 0 %>
+        <h4>Les emprunts que vous avez demandé</h4>
+        <ul>
+            <% @myTrocs.each do |troc| %>
+                <li>Vous souhaittez emprunter le <%= troc.film.title %> de <%= troc.user.username %></li>
+            <% end %>
+        </ul>
+    <% else %>
+        <h6>Vous n'avez demandé aucun emprunt</h6>
     <% end %>
-  </select>
-  <div id="hisMovies"></div>
-<% end %>
 
-<script>
-    document.getElementById('user_id').onchange = function () {
-        if (document.getElementById('user_id').value == 0) {
-            document.getElementById('hisMovies').innerHTML = "";
-            return;
-        }
+    <% if @otherTrocs.length() > 0 %>
+        <h4>Les emprunts qui vous sont demandé</h4>
+        <ul>
+            <% @otherTrocs.each do |troc| %>
+                <li><%= troc.user.username %> souhaitte emprunter votre <%= troc.film.title %></li>
+            <% end %>
+        </ul>
+    <% else %>
+        <h6>Aucun emprunt ne vous est demandé</h6>
+    <% end %>
 
-        let id = parseInt(document.getElementById('user_id').value);
-        let str = "<select id='film_id' name='film_id'>";
-        <% @films.each do |film| %>
-            if (<%= film.user.id %> == id) {
-                str += "<option value='<%= film.id %>'><%= film.title %></option>";
-            }
-        <% end %>
-        str += "</select><br/><input type='submit' value='Envoyer la demande de troc'/>";
-        document.getElementById('hisMovies').innerHTML = str;
-    }
-</script>
+    <%= link_to "New troc", new_troc_path %>
+</div>
