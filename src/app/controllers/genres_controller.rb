@@ -4,7 +4,11 @@ class GenresController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @genres = Genre.all
+    if(current_user.role != 'admin')
+        redirect_to root_path
+    else
+        @genres = Genre.all
+    end
   end
 
   # GET /comments/1

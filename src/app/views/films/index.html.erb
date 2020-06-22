@@ -3,28 +3,30 @@
         <p id="notice"><%= notice %></p>
     </div>
 
-    <h1>Films</h1>
-    <table>
-        <thead>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Director</th>
-            <th>Action</th>
-        </thead>
+    <% if (@films.present?) %>
+      <h1>Films</h1>
+      <table>
+          <thead>
+              <th>Titre</th>
+              <th>Description</th>
+              <th>Director</th>
+              <th>Action</th>
+          </thead>
 
-        <tbody>
-        <% @films.each do |film| %>
-           <tr>
-            <td><%= film.title %></td>
-            <td><%= film.description %></td>
-            <td><%= film.director %></td>
-            <td><%= link_to("Show", film)%></td>
-            <td><%= link_to("Edit", edit_film_path(film))%></td>
-            <td><%= link_to("Delete", film, method: :delete, data: { confirm: "Supprimer ?"})%></td>
-           </tr>
-        <% end %>
-        </tbody>
-    </table>
+          <tbody>
+          <% @films.each do |film| %>
+             <tr>
+              <td><%= film.title %></td>
+              <td><%= film.description %></td>
+              <td><%= film.director %></td>
+              <td><%= link_to("Show", film)%></td>
+              <td><%= link_to("Edit", edit_film_path(film))%></td>
+              <td><%= link_to("Delete", film, method: :delete, data: { confirm: "Supprimer ?"})%></td>
+             </tr>
+          <% end %>
+          </tbody>
+      </table>
+    <% end %>
 
     <%= link_to "Ajouter un film", new_film_path %>
     <%= link_to "Dashboard", trocs_path %>
