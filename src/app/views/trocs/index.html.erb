@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <p id="notice"><%= notice %></p>
+    </div>
+
+    <h1>Emprunts</h1>
+
+    <% if @myTrocs.length() > 0 %>
+        <h4>Les emprunts que vous avez demandé</h4>
+        <ul>
+            <% @myTrocs.each do |troc| %>
+                <li>Vous souhaittez emprunter le <%= troc.film.title %> de <%= troc.user.username %></li>
+            <% end %>
+        </ul>
+    <% else %>
+        <h6>Vous n'avez demandé aucun emprunt</h6>
+    <% end %>
+
+    <% if @otherTrocs.length() > 0 %>
+        <h4>Les emprunts qui vous sont demandé</h4>
+        <ul>
+            <% @otherTrocs.each do |troc| %>
+                <li><%= troc.user.username %> souhaitte emprunter votre <%= troc.film.title %></li>
+            <% end %>
+        </ul>
+    <% else %>
+        <h6>Aucun emprunt ne vous est demandé</h6>
+    <% end %>
+
+    <%= link_to "New troc", new_troc_path %>
+</div>
