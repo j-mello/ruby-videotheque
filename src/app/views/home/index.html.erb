@@ -307,13 +307,4 @@
     </div>
 </div>
 
-    <h2>
-        <% if user_signed_in? %>
-        	<%= link_to 'Mon dashboard', trocs_path %>
-            <%= link_to 'Se deconnecter', destroy_user_session_path, method: :delete %> 
-        <% else %>
-            <%= link_to 'Se connecter', new_user_session_path %>
-        <% end %>
-    </h2>
-
 </div>
