@@ -1,26 +1,41 @@
-<h2>Se connecter</h2>
+<section class="page-section" id="contact">
 
+  <div class="container" style="background-color:#17a2b8;; border-radius:30px; padding:3%; margin-top:-3%; margin-bottom:-3%; color:white;">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Se Connecter</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+
+<div class="col-lg-3 mx-auto">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :login %><br />
+    <%= f.label :Nom_d_Utilisateur %><br />
     <%= f.text_field :login, autofocus: true%>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :Mot_de_passe %><br />
     <%= f.password_field :password %>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :Se_souvenir_de_moi %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Se connecter" %>
+    <%= f.submit "Se connecter", class: "btn btn-primary btn-l", style: "background-color:#dfa130;" %>
   </div>
+  <div class="actions" style="color:white;">
+<%= render "devise/shared/links" %>
+</div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
+</section>
