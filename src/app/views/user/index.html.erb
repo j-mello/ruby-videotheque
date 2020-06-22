@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Admin Pannel</h1>
+
+    <% if (@users.present?) %>
+        <h1>Utilisateurs</h1>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th colspan="3">Action</th>
+            </thead>
+
+            <tbody>
+            <% @users.each do |user| %>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td><%= user.username %></td>
+                <td><%= user.role %></td>
+                <td><%= link_to("Delete", user, method: :delete, data: { confirm: "Supprimer ?"})%></td>
+            <% end %>
+            </tbody>
+        </table>
+    <% end %>
+</div>
