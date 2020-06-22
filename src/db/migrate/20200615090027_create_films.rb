@@ -7,6 +7,7 @@ class CreateFilms < ActiveRecord::Migration[6.0]
       t.time :duration
       t.string :timestamp
       t.belongs_to :genre, null: false, foreign_key: true
+      t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
     end
