@@ -3,7 +3,6 @@ class FilmsController < ApplicationController
     before_action :set_film, only: [:show, :edit, :update, :destroy]
     # Get /post
     def index
-        #@films = Film.all
         @films = Film.where(:user_id => current_user.id)
     end
     # Get /post/1

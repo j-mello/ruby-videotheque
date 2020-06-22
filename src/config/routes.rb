@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :genres
   resources :films
   resources :trocs
-  resources :admin
+  resources :user
 end

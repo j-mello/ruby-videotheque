@@ -3,7 +3,11 @@ class UserController < ApplicationController
     before_action :set_user, only: [:destroy]
 
     def index
-        @users = User.all
+        if(current_user.role != 'admin')
+            redirect_to root_path
+        else
+            @users = User.all
+        end
     end
 
     def show
@@ -12,7 +16,7 @@ class UserController < ApplicationController
     # delete users/1
     def destroy
         @user.destroy
-        redirect_to admin_url, notice: "Utilisateur supprimé"
+        redirect_to "/user", notice: "Utilisateur supprimé"
     end
 
     private

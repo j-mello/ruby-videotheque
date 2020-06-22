@@ -14,7 +14,7 @@
   <nav class="navbar navbar-dark bg-primary">
     <span class="navbar-brand mb-0 h1">Videotheque</span>
     <% if user_signed_in? && current_user.role === 'admin' %>
-      <%= link_to "Dashboard", admin_index_path %>
+      <%= link_to "Dashboard", user_index_path %>
     <% end %>
   </nav>
 

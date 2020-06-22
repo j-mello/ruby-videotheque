@@ -18,7 +18,7 @@
                 <td><%= user.email %></td>
                 <td><%= user.username %></td>
                 <td><%= user.role %></td>
-                <td><%= link_to("Delete", @user, method: :delete, data: { confirm: "Supprimer ?"})%></td>
+                <td><%= link_to("Delete", user, method: :delete, data: { confirm: "Supprimer ?"})%></td>
             <% end %>
             </tbody>
         </table>
