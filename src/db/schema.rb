@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_06_21_113547) do
     t.string "title"
     t.text "description"
     t.string "director"
-    t.time "duration"
     t.string "timestamp"
     t.bigint "genre_id", null: false
     t.bigint "user_id", null: false
