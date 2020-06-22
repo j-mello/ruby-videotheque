@@ -9,11 +9,14 @@
       <a href="<% root_path %>">Dashboard</a>
     <% end %>
           <% if user_signed_in? %>
+          <%= link_to 'Mes demandes', trocs_path %>
           <%= link_to 'Se deconnecter', destroy_user_session_path, style: "color=white;", method: :delete %>
         <% else %>
+            <%= link_to "S'inscrire", new_user_registration_path %>
             <%= link_to 'Se connecter', new_user_session_path, style: "color=white;"%>
         <% end %>
   </div>
+
   </nav>
 
     <p class="notice"><%= notice %></p>
