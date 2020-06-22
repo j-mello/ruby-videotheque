@@ -19,3 +19,11 @@ services:
       - 80:3000
     volumes:
       - ./src:/app
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    depends_on:
+      - mariadb
+    ports:
+      - 8888:80
+    environment:
+      - PMA_ARBITRARY=1

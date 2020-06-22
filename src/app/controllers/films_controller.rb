@@ -2,8 +2,7 @@ class FilmsController < ApplicationController
     before_action :set_film, only: [:show, :edit, :update, :destroy]
     # Get /post
     def index
-        authorize! :read, Film
-        @films = Film.all
+        @films = Film.where(:user_id => current_user.id)
     end
     # Get /post/1
     def show
@@ -22,12 +21,9 @@ class FilmsController < ApplicationController
         end
     end
 
-    # Get /post/1/edit
-
     def edit
     end
 
-    # Path/put /posts/1
     def update
         if @film.update(film_params)
             redirect_to @film, notice: "Movie updated"
@@ -36,16 +32,19 @@ class FilmsController < ApplicationController
         end
     end
 
-    # delete posts/1
     def destroy
         @film.destroy
         redirect_to films_url, notice: "Movie destroyed"
     end
 
+    def all
+        @films = Film.all
+    end
+
 
     private
     def film_params
-        params.require(:film).permit(:title, :description, :director, :duration, :genre_id)
+        params.require(:film).permit(:title, :description, :director, :genre_id).merge(user_id: current_user.id)
     end
     def set_film
         @film = Film.find(params[:id])

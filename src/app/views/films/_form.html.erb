@@ -28,11 +28,6 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label :duration %>
-    <%= form.text_field :duration, class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
     <%= form.label :genre_id %>
     <%= form.select :genre_id, Genre.all.collect { |genre| [ genre.name, genre.id ] }, include_blank: false %>
   </div>
