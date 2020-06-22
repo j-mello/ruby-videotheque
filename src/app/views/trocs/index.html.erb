@@ -57,5 +57,8 @@
         </ul>
     <% end %>
 
-    <%= link_to "New troc", new_troc_path %>
+    <%= link_to "Mes films", films_path %>
+    <%= link_to "Emprunter un film", new_troc_path %>
+    <%= link_to 'Se deconnecter', destroy_user_session_path, method: :delete %>
+
 </div>
