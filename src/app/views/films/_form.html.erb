@@ -13,7 +13,7 @@
 
 
   <div class="field form-group">
-    <%= form.label :title %>
+    <%= form.label :title, "Titre" %>
     <%= form.text_field :title, class: "form-control" %>
   </div>
 
@@ -23,17 +23,17 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label :director %>
+    <%= form.label :director, "Réalisateur"%>
     <%= form.text_field :director, class: "form-control" %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :genre_id %>
+    <%= form.label :genre_id%>
     <%= form.select :genre_id, Genre.all.collect { |genre| [ genre.name, genre.id ] }, include_blank: false %>
   </div>
 
   <div class="actions">
-    <%= form.submit :class => "btn btn-primary" %>
+    <%= form.submit "Valider", :class => "btn btn-primary" %>
   </div>
 
 <% end %>

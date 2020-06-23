@@ -1,16 +1,24 @@
-<div class="container">
-    <div class="alert alert-success" role="alert">
-        <p id="notice"><%= notice %></p>
+<section class="page-section">
+
+  <div class="container" style="background-color:#38B324; border-radius:30px; padding:3%; margin-top:-1%; margin-bottom:-3%">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Films</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
     </div>
 
     <% if (@films.present?) %>
-      <h1>Films</h1>
-      <table>
-          <thead>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
               <th>Titre</th>
               <th>Description</th>
-              <th>Director</th>
+              <th>Realisateur</th>
               <th>Action</th>
+              <th></th>
+              <th></th>
           </thead>
 
           <tbody>
@@ -19,16 +27,18 @@
               <td><%= film.title %></td>
               <td><%= film.description %></td>
               <td><%= film.director %></td>
-              <td><%= link_to("Show", film)%></td>
-              <td><%= link_to("Edit", edit_film_path(film))%></td>
-              <td><%= link_to("Delete", film, method: :delete, data: { confirm: "Supprimer ?"})%></td>
+              <td><%= link_to("Voir", film)%></td>
+              <td><%= link_to("Modifier", edit_film_path(film))%></td>
+              <td><%= link_to("Supprimer", film, method: :delete, data: { confirm: "Supprimer ?"})%></td>
              </tr>
           <% end %>
           </tbody>
       </table>
     <% end %>
 
-    <%= link_to "Ajouter un film", new_film_path %>
-    <%= link_to "Dashboard", trocs_path %>
+
+    <%= link_to "Ajouter un film", new_film_path, class: "btn btn-l text-white", style:"background-color:green; border-color:white"  %>
+    <%= link_to "Mes demandes", trocs_path, class: "btn btn-l text-white", style:"border-color:white"  %>
 
 </div>
+</section>
