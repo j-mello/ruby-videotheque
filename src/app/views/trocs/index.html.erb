@@ -1,9 +1,14 @@
-<div class="container">
-    <div class="alert alert-success" role="alert">
-        <p id="notice"><%= notice %></p>
-    </div>
+<section class="page-section">
 
-    <h1>Emprunts</h1>
+  <div class="container" style="background-color:#96225E; border-radius:30px; padding:3%; margin-top:-1%; margin-bottom:-3%">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Mes demandes de Troc</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
 
     <% if @myTrocs.length() > 0 %>
         <h4>Les emprunts que vous avez demandé</h4>
@@ -57,7 +62,8 @@
         </ul>
     <% end %>
 
-    <%= link_to "Mes films", films_path %>
-    <%= link_to "Emprunter un film", new_troc_path %>
+    <%= link_to "Mes films", films_path, class: "btn btn-l text-white", style:"background-color:green" %>
+    <%= link_to "Emprunter un film", new_troc_path, class: "btn btn-l text-white", style:"border-color:white; background-color:#B32E74" %>
+    </div>
 
-</div>
+</section>

@@ -1,4 +1,15 @@
-<h1>Créer un troc</h1>
+<section class="page-section">
+
+  <div class="container" style="background-color:#96225E; border:black;border-radius:30px; padding:3%; margin-top:-3%; margin-bottom:-3%; color:white;">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Emprunter un film</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+<div class="col-lg-6 col-md-6 mx-auto">
 
 <%= form_tag "/trocs", method: "post" do %>
   <label>Quel utilisateur ?</label>
@@ -19,7 +30,7 @@
             document.getElementById('hisMovies').innerHTML = "";
             return;
         }
-
+        
         let id = parseInt(document.getElementById('user_id').value);
         let str = "<select id='film_id' name='film_id'>";
         <% @films.each do |film| %>
@@ -27,7 +38,9 @@
                 str += "<option value='<%= film.id %>'><%= film.title %></option>";
             }
         <% end %>
-        str += "</select><br/><input type='submit' value='Envoyer la demande de troc'/>";
+        str += "</select><br/><br/><input type='submit' value='Envoyer la demande de troc'  class='btn btn-l text-white' style='background-color:#B32E74; border-color:white;'/>";
         document.getElementById('hisMovies').innerHTML = str;
     }
 </script>
+
+</section>
