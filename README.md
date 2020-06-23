@@ -1,52 +1,30 @@
-# After cloning the repo
+Lancer le projet
+================
+
+Une fois lancé, le projet est disponible sur le port 80.
+
+# Docker est obligatoire pour utiliser ce projet !
+
+Rendez-vous sur Docker pour l'installer : https://www.docker.com/
+
+# Une fois le repository téléchargé :
 ```
+docker-compose up -d
+
 docker-compose exec app yarn install --check-files
-```
 
-# Create migration
-```
-docker-compose exec app rails generate migration CreatePost title:string content:text timestamps
-```
-
-# Run migration
-```
 docker-compose exec app rails db:migrate
 ```
+# Pour créer un admin :
 
-# Rollback migration
-```
-docker-compose exec app rails db:rollback
-```
+Créer le premier compte.
 
-# Console
-```
-docker-compose exec app rails console
-```
-
-# Create a resource
-```
-mypost = Post.new(title: "article 1", content: "contenu de l'article 1")
-mypost.save
-```
-
-OR
+Une fois le compte créé, se rendre sur la console :
 
 ```
-Post.create(title: "article 1", content: "contenu de l'article 1")
-```
+docker-compose exec app rails s
 
-# Show routes
+#rb>user.find(1).update(role: 'admin')
 ```
-docker-compose exec app rails routes
-```
+L'admin peut supprimer des comptes utilisateurs et est le seul à pouvoir ajouter des genres.
 
-# Add column
-```
-docker-compose exec app rails generate migration AddStatusToPost status:boolean
-```
-
-
-# Generate Scaffold
-```
-docker-compose exec app rails generate scaffold Comment name:string message:text post:belongs_to
-```
