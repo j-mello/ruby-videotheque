@@ -1,7 +1,10 @@
 Lancer le projet
 ================
 
-Une fois lancé, le projet est disponible sur le port 80.
+# Description
+
+Ce projet Ruby on Rails permet de gérer sa liste de films et d'emprunter des films à d'autres utilisateurs.
+Il dispose aussi d'un compte administrateur qui gère le nom des genres et supprime les comptes.
 
 # Docker est obligatoire pour utiliser ce projet !
 
@@ -13,8 +16,11 @@ docker-compose up -d
 
 docker-compose exec app yarn install --check-files
 
-docker-compose exec app rails db:migrate
+docker-compose restart
 ```
+
+Une fois lancé, le projet est disponible sur le port 80.
+
 # Pour créer un admin :
 
 Créer le premier compte.
