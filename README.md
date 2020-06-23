@@ -1,29 +1,52 @@
-<<<<<<< HEAD
-# README
+# After cloning the repo
+```
+docker-compose exec app yarn install --check-files
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Create migration
+```
+docker-compose exec app rails generate migration CreatePost title:string content:text timestamps
+```
 
-Things you may want to cover:
+# Run migration
+```
+docker-compose exec app rails db:migrate
+```
 
-* Ruby version
+# Rollback migration
+```
+docker-compose exec app rails db:rollback
+```
 
-* System dependencies
+# Console
+```
+docker-compose exec app rails console
+```
 
-* Configuration
+# Create a resource
+```
+mypost = Post.new(title: "article 1", content: "contenu de l'article 1")
+mypost.save
+```
 
-* Database creation
+OR
 
-* Database initialization
+```
+Post.create(title: "article 1", content: "contenu de l'article 1")
+```
 
-* How to run the test suite
+# Show routes
+```
+docker-compose exec app rails routes
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+# Add column
+```
+docker-compose exec app rails generate migration AddStatusToPost status:boolean
+```
 
-* Deployment instructions
 
-* ...
-=======
-# ruby-videotheque
-Projet Ruby
->>>>>>> d9840eae87a6d85f15b3bbc0c6eb55873d0a1980
+# Generate Scaffold
+```
+docker-compose exec app rails generate scaffold Comment name:string message:text post:belongs_to
+```

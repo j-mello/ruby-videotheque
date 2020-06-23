@@ -1,0 +1,24 @@
+<section class="page-section">
+
+  <div class="container" style="background-color:#38B324; border-radius:30px; padding:3%; margin-top:-1%; margin-bottom:-3%">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Films</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+
+<div class="col-lg-6 col-md-6 mx-auto">
+	<!--<div class="alert alert-success" role="alert">
+		<p id="notice"><%= notice %></p>
+	</div> -->
+
+	<h2> Titre : <%= @film.title %> </h2>
+	<h3> Réalisateur : <%= @film.director %> </h3>
+	<p> <strong><%= @film.description %></strong></p>
+
+	<%= link_to "Liste des films", films_path, class: "btn btn-l text-white", style:"border-color:white; background-color:green;" %>
+</div>
+</section>

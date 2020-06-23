@@ -1,0 +1,69 @@
+<section class="page-section">
+
+  <div class="container" style="background-color:#96225E; border-radius:30px; padding:3%; margin-top:-1%; margin-bottom:-3%">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Mes demandes de Troc</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+
+    <% if @myTrocs.length() > 0 %>
+        <h4>Les emprunts que vous avez demandé</h4>
+        <ul>
+            <% @myTrocs.each do |troc| %>
+                <li>Vous souhaittez emprunter le <%= troc.film.title %> de <%= troc.user2.username %></li>
+            <% end %>
+        </ul>
+    <% else %>
+        <h6>Vous n'avez demandé aucun emprunt</h6>
+    <% end %>
+
+    <% if @otherTrocs.length() > 0 %>
+        <h4>Les emprunts qui vous sont demandé</h4>
+        <ul>
+            <% @otherTrocs.each do |troc| %>
+                <li>
+                    <%= troc.user1.username %> souhaitte emprunter votre <%= troc.film.title %>
+                    <%= form_tag "/trocs/"+troc.id.to_s, method: "patch" do %>
+                      <input type="hidden" name="id" value="<%= troc.id %>"/>
+                      <input type="hidden" name="etat" value="accept"/>
+                      <input type="submit" value="Accepter"/>
+                    <% end %>
+                    <%= form_tag "/trocs/"+troc.id.to_s, method: "patch" do %>
+                      <input type="hidden" name="id" value="<%= troc.id %>"/>
+                      <input type="hidden" name="etat" value="refus"/>
+                      <input type="submit" value="Refuser"/>
+                    <% end %>
+                 </li>
+            <% end %>
+        </ul>
+    <% else %>
+        <h6>Aucun emprunt ne vous est demandé</h6>
+    <% end %>
+
+    <% if @acceptedsTrocs.length() > 0 %>
+        <h4>Les emprunts qui ont été acceptés</h4>
+        <ul>
+            <% @acceptedsTrocs.each do |troc| %>
+                <li><%= troc.user2.username %> a accepté de vous donner son <%= troc.film.title %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <% if @refusedTrocs.length() > 0 %>
+        <h4>Les emprunts que ont été refusés</h4>
+        <ul>
+            <% @refusedTrocs.each do |troc| %>
+                <li><%= troc.user2.username %> a refusés de vous donner son <%= troc.film.title %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <%= link_to "Mes films", films_path, class: "btn btn-l text-white", style:"background-color:green" %>
+    <%= link_to "Emprunter un film", new_troc_path, class: "btn btn-l text-white", style:"border-color:white; background-color:#B32E74" %>
+    </div>
+
+</section>
