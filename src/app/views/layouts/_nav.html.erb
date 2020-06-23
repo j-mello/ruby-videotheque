@@ -1,25 +1,23 @@
-
-
 <body id=page-top>
 <header>
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="#">Videotheque</a>
+    <a class="navbar-brand" href=".">Videotheque</a>
     <% if user_signed_in? && current_user.role === 'admin' %>
-      <a href="<% root_path %>">Dashboard</a>
+      <a href="/user">Utilisateurs</a>
+      <%= link_to 'Genres', genres_path %>
     <% end %>
           <% if user_signed_in? %>
+          <%= link_to 'Films', films_path %>
           <%= link_to 'Mes demandes', trocs_path %>
+
           <%= link_to 'Se deconnecter', destroy_user_session_path, style: "color=white;", method: :delete %>
+          
         <% else %>
+            
             <%= link_to "S'inscrire", new_user_registration_path %>
             <%= link_to 'Se connecter', new_user_session_path, style: "color=white;"%>
         <% end %>
   </div>
-
   </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
 </header>
