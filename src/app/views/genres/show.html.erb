@@ -1,13 +1,22 @@
-<div class="container">
-	<div class="alert alert-success" role="alert">
-		<p id="notice"><%= notice %></p>
-	</div>
+<<section class="page-section">
 
+  <div class="container" style="background-color:#006AA2; border:black;border-radius:30px; padding:3%; margin-top:-3%; margin-bottom:-3%; color:white;">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Modifier le genre</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+<div class="col-lg-6 col-md-6 mx-auto">
 	<p>
-	  <strong>Name:</strong>
-	  <%= @genre.name %>
+	  Titre:
+	  <strong><%= @genre.name %></strong>
 	</p>
 
-	<%= link_to 'Edit', edit_genre_path(@genre) %> |
-	<%= link_to 'Back', genres_path %>
+	<%= link_to 'Modifier', edit_genre_path(@genre), class: "btn btn-l text-white", style:"border-color:orange" %> |
+	<%= link_to 'Annuler', genres_path, class: "btn btn-l text-white", style:"border-color:orange" %>
+	</div>
 </div>
+</section>
